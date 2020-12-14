@@ -181,6 +181,13 @@ class XCConfigurationList(PBXISA, PBXISADictionaryBound):
                     targets.append(object)
         return targets
 
+class XCSwiftPackageProductDependency(PBXISA, PBXISADictionaryBound):
+    def __init__(self, *args, **kwargs):
+        super(XCSwiftPackageProductDependency, self).__init__(*args, **kwargs)
+
+    def get_name(self, project):
+        return self.productName
+
 class XCVersionGroup(PBXISA, PBXISADictionaryBound):
     def __init__(self, *args, **kwargs):
         super(XCVersionGroup, self).__init__(*args, **kwargs)

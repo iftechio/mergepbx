@@ -264,6 +264,7 @@ class PBXGroupMerger3(_SimpleDictMerger3):
 class _AbstractTargetMerger3(_SimpleDictMerger3):
     merge_buildPhases = create_auto_merge_set("buildPhases", optional = True)
     merge_dependencies = create_auto_merge_set("dependencies", optional = True)
+    merge_packageProductDependencies = create_auto_merge_set("packageProductDependencies", optional = True)
     merge_files = create_auto_merge_set("files", optional = True)
 
 class PBXFrameworksBuildPhaseMerger3(_AbstractTargetMerger3):
@@ -290,6 +291,9 @@ class PBXContainerItemProxyMerger3(_SimpleDictMerger3):
     pass
 
 class PBXTargetDependencyMerger3(_SimpleDictMerger3):
+    pass
+
+class XCSwiftPackageProductDependencyMerger3(_SimpleDictMerger3):
     pass
 
 class PBXProjectMerger3(_SimpleDictMerger3):
