@@ -29,6 +29,10 @@ class PBXBuildFile(PBXISA, PBXISADictionaryBound):
             fileRef = self.fileRef
             file = project.get_objects().get(fileRef)
             name = file.get_name(project)
+        elif self.has_attr("productRef"):
+            productRef = self.productRef
+            product = project.get_objects().get(productRef)
+            name = product.get_name(project)
         else:
             name = "(null)"
         container = project.phase_of_object(self._identifier)
@@ -51,7 +55,7 @@ class AbstractPBXBuildPhase(PBXISADictionaryBound):
                 return "(null)"
 
 class PBXCopyFilesBuildPhase(AbstractPBXBuildPhase, PBXISA):
-    pass
+    DEFAULT_NAME = "CopyFiles"
 
 class PBXFrameworksBuildPhase(AbstractPBXBuildPhase, PBXISA):
     DEFAULT_NAME = "Frameworks"
